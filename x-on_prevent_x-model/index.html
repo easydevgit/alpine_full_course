@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <form x-data="{
+        name: '',
+        rulesAgree: false,
+        gender: 'M',
+        period: ''
+    }" x-on:submit.prevent="" class="w-full max-w-xs bg-white shadow-md rounded px-8 pt-6 pb-8 m-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+            Username
+        </label>
+        <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username" type="text" placeholder="Username" x-model="name">
+
+        <div class="mt-2">
+            <input type="checkbox" id="rulesAgreement"
+                class="h-4 w-4 mt-1 border rounded float-left cuursor-pointer mr-2" x-model="rulesAgree">
+            <label for="rulesAgreement">I agree with rules</label>
+        </div>
+
+        <div class="mt-2">
+            <div>Gender:</div>
+            <div>
+                <input type="radio" id="male" value="M" name="gender" x-model="gender">
+                <label for="male">Male</label>
+            </div>
+
+            <div>
+                <input type="radio" id="female" value="F" name="gender" x-model="gender">
+                <label for="female">Female</label>
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <label for="period">Choose period:</label>
+            <select name="period" id="period" x-model="period" class="border">
+                <option value="one_day">1 day</option>
+                <option value="one_week">1 week</option>
+                <option value="one_month">1 month</option>
+            </select>
+
+        </div>
+
+
+
+        <div x-text="period"></div>
+
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded">Send</button>
+    </form>
+
+</body>
+
+</html>

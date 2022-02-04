@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div x-data="{
+        dogImg: '',
+
+        getImg() {
+            fetch('https://dog.ceo/api/breeds/image/random')
+            .then(response => response.json())
+            .then(response => this.dogImg = response.message)
+        }
+    }">
+
+        <button @click="getImg" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded">Get
+            Image</button>
+
+        <img :src="dogImg" class="m-2">
+    </div>
+
+</body>
+
+</html>

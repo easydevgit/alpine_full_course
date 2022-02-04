@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+
+<body>
+    <div x-data="{
+        open: false,
+
+        toggle() {
+           this.open = !this.open 
+        },
+
+        someText: '<b>Some bold text</b>'
+
+    }">
+        <button @mouseenter="toggle">Переключатель</button>
+
+        <div x-show="open" x-transition.duration.500ms>Текст</div>
+
+        <input type="text" x-on:keydown.enter.shift="console.log('Click')">
+
+      
+        <div x-html="someText"></div>
+       
+
+    </div>
+
+</body>
+
+</html>

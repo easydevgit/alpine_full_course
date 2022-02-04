@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div x-data="{
+        hidden: true,
+    }">
+
+        <nav class="container mx-auto">
+            <ul class="flex flex-row w-96 justify-between items-center font-medium">
+                <li>
+                    <a href="#" class="block hover:text-blue-500">Вложения</a>
+                </li>
+                <li class="relative">
+                    <a href="#" x-on:click.stop="hidden=false" class="block hover:text-blue-500">Услуги</a>
+                    <div x-on:click.outside="hidden=true" x-bind:class="{'hidden': hidden}" class=" absolute -left-4 shadow">
+                        <ul>
+                            <li>
+                                <a href="#" class="block py-2 px-4 text-sm  hover:bg-slate-100">Маркетинг</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block py-2 px-4 text-sm  hover:bg-slate-100">Управление</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block py-2 px-4 text-sm  hover:bg-slate-100">Вклады</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block py-2 px-4 text-sm  hover:bg-slate-100">Доставка</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="block hover:text-blue-500">Заключить
+                        контракт</a>
+                </li>
+                <li>
+                    <a href="#" class="block hover:text-blue-500">О
+                        нас</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</body>
+
+</html>

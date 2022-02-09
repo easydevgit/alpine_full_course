@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div x-data>
+        <button x-show="$store.buttonsData.isFirstButtonShow" x-text="$store.buttonsData.firstButtonText" id="alpineButton"
+            @ev.window="console.log($event.detail.message)" class="border p-4 m-4 rounded text-blue-700"></button>
+    </div>
+
+    <div x-data>
+        <button x-text="$store.buttonsData.secondButtonText" @click="$store.buttonsData.hideFirstButton()"
+            class="border p-4 m-4 rounded"></button>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('buttonsData', {
+                firstButtonText: "Alpine Button",
+                secondButtonText: "Alpine Button2",
+
+                isFirstButtonShow: true,
+
+                hideFirstButton() {
+                    this.isFirstButtonShow = false
+                }
+            })
+        })
+    </script>
+
+</body>
+
+</html>

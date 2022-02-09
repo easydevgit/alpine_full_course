@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div x-data="countiesComponent()" x-init="getData" class="max-w-xs mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 m-4">
+
+        <h2 x-text="currentCountry" x-ref="selectedCountry" class="font-bold text-2xl mb-4"></h2>
+
+        <template x-for="(val, idx) in countries" :key="idx">
+            <div class="flex" @click="currentCountry = $el.innerText">
+                <div x-text="idx" class="font-bold"></div>:
+                <div x-text="val?.All?.confirmed"></div>
+            </div>
+        </template>
+
+    </div>
+
+    <script>
+        const countiesComponent = () => {
+            return {
+                countries: {},
+                currentCountry: '',
+                getData() {
+                    fetch(`https://covid-api.mmediagroup.fr/v1/cases`)
+                        .then(response => response.json())
+                        .then(response => {
+                            this.countries = response
+                        })
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -25,10 +25,10 @@
                 })
         }
     
-    }" class="max-w-xs mx-auto bg-white shadow-md rounder px-8 pt-6 pb-8 m-4">
+    }" class="max-w-xs mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 m-4">
         <label for="country">Enter country:</label>
-        <input type="text" x-model="country" @keydown.debounce.750="getData" id="country"
-            class="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3">
+        <input type="text" x-model="country" @keyup.debounce.750="getData" id="country"
+            class="shadow border rounded w-full text-gray-700 py-2 px-3">
 
         <template x-if="result">
             <div class="flex mt-4">
